@@ -1,9 +1,8 @@
+import carsRouter from '@modules/Cars/infra/http/routes/cars.routes';
 import { Router } from 'express';
 
 const routes = Router();
 
-routes.get('/', (request, response) => {
-  return response.json({ message: 'Funcionando' });
-});
+routes.use('/cars', carsRouter);
 
 export default routes;
