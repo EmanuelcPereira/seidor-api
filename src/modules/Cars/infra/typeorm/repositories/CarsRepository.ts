@@ -23,8 +23,58 @@ class CarsRepository implements ICarsRepository {
     return car;
   }
 
-  async findByPlaca(placa: string): Promise<Car | undefined> {
+  public async findByPlaca(placa: string): Promise<Car | undefined> {
     const car = await this.repository.findOne({ placa });
+
+    return car;
+  }
+
+  public async findById(id: string): Promise<Car | undefined> {
+    const car = await this.repository.findOne({ id });
+
+    return car;
+  }
+
+  public async save(car: Car): Promise<Car> {
+    await this.repository.save(car);
+
+    return car;
+  }
+
+  public async softDelete(id: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder('delete')
+      .update()
+      .set({ is_deleted: true })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
+
+  public async softRestore(id: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder('restore')
+      .update()
+      .set({ is_deleted: false })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
+
+  public async findRegistered(marca?: string, cor?: string): Promise<Car[]> {
+    const carsQuery = this.repository
+      .createQueryBuilder()
+      .where('is_deleted = :is_deleted', { is_deleted: false });
+
+    if (marca) {
+      carsQuery.andWhere('marca = :marca', { marca });
+    }
+
+    if (cor) {
+      carsQuery.andWhere('cor = :cor', { cor });
+    }
+
+    const car = carsQuery.getMany();
 
     return car;
   }

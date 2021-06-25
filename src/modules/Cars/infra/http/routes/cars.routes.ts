@@ -6,5 +6,9 @@ const carsRouter = Router();
 const carsController = new CarsController();
 
 carsRouter.post('/', carsController.create);
+carsRouter.put('/:id', carsController.update);
+carsRouter.delete('/:id', carsController.softDelete);
+carsRouter.patch('/:id', carsController.softRestore);
+carsRouter.get('/', carsController.findRegistered);
 
 export default carsRouter;

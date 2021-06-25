@@ -27,6 +27,11 @@ export class CreateCar1624475518272 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'available',
+            type: 'boolean',
+            default: 'true',
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -35,6 +40,11 @@ export class CreateCar1624475518272 implements MigrationInterface {
             name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
+          },
+          {
+            name: 'is_deleted',
+            type: 'boolean',
+            default: false,
           },
         ],
       }),
