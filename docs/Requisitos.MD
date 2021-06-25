@@ -10,15 +10,15 @@ Cadastro de automóvel:
 [x] Listar os automóveis cadastrados. Deve ser possível filtrar a listagem dos automóveis por cor e marca.
 
 Cadastro de motoristas
-[] Cadastrar um novo motorista
+[x] Cadastrar um novo motorista
 
-[] Atualizar um motorista cadastrado
+[x] Atualizar um motorista cadastrado
 
-[] Excluir um motorista cadastrado
+[x] Excluir um motorista cadastrado
 
-[] Recuperar um motorista cadastrado pelo seu identificador único
+[x] Recuperar um motorista cadastrado pelo seu identificador único
 
-[] Listar os motoristas cadastrados. Deve ser possível filtrar a listagem dos motoristas por nome.
+[x] Listar os motoristas cadastrados. Deve ser possível filtrar a listagem dos motoristas por nome.
 
 
 Utilização de um automóvel
