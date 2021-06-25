@@ -78,7 +78,7 @@ class CarsController {
     }
   }
 
-  public async findRegistered(
+  public async listCars(
     request: Request,
     response: Response,
   ): Promise<Response> {

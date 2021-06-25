@@ -9,6 +9,6 @@ carsRouter.post('/', carsController.create);
 carsRouter.put('/:id', carsController.update);
 carsRouter.delete('/:id', carsController.softDelete);
 carsRouter.patch('/:id', carsController.softRestore);
-carsRouter.get('/', carsController.findRegistered);
+carsRouter.get('/', carsController.listCars);
 
 export default carsRouter;
