@@ -1,4 +1,4 @@
-import FakeCarsRepository from '../repositories/fakes/FakeCarsRepository';
+import FakeCarsRepository from '../repositories/fake/FakeCarsRepository';
 import ListCarService from './ListCarService';
 
 let fakeCarsRepository: FakeCarsRepository;

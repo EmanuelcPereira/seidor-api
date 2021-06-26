@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 
-import FakeCarsRepository from '../repositories/fakes/FakeCarsRepository';
+import FakeCarsRepository from '../repositories/fake/FakeCarsRepository';
 import SoftDeleteCarService from './SoftDeleteCarService';
 
 let fakeCarsRepository: FakeCarsRepository;
