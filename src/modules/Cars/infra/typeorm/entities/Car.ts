@@ -1,7 +1,6 @@
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -20,9 +19,6 @@ class Car {
 
   @Column()
   cor: string;
-
-  @Column()
-  available: boolean;
 
   @CreateDateColumn()
   created_at: Date;
