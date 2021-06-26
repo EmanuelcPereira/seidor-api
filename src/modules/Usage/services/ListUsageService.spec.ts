@@ -1,5 +1,3 @@
-import AppError from '@shared/errors/AppError';
-
 import FakeUsageRepository from '../repositories/fake/FakeUsageRepository';
 import ListUsageService from './ListUsageService';
 

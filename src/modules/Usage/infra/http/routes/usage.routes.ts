@@ -6,7 +6,7 @@ const usageRouter = Router();
 const usageController = new UsageController();
 
 usageRouter.post('/', usageController.create);
-usageRouter.put('/devolution/:id', usageController.devolve);
+usageRouter.patch('/devolution/:id', usageController.devolve);
 usageRouter.get('/', usageController.listAll);
 
 export default usageRouter;

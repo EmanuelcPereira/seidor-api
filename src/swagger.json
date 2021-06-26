@@ -1,0 +1,498 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Seidor API",
+    "description": "API to handle usage of cars",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/cars": {
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Create a car",
+        "description": "Create a new car",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "marca": {
+                    "type": "string"
+                  },
+                  "placa": {
+                    "type": "string"
+                  },
+                  "cor": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "marca": "Brand example",
+                  "placa": "ABC-1111",
+                  "cor": "verde"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "car already registered"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "List cars",
+        "description": "List all cars registered and active",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "None car found"
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "put": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Update car",
+        "description": "Update car infos",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "marca": {
+                    "type": "string"
+                  },
+                  "placa": {
+                    "type": "string"
+                  },
+                  "cor": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "marca": "Brand example 2",
+                  "placa": "DEF-2222",
+                  "cor": "preto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Car updated"
+          },
+          "400": {
+            "description": "car not registered"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Soft delete car",
+        "description": "Activate a flag 'is_deleted' on object to don't show up on searchs",
+        "operationId": "softDeletebyId",
+        "responses": {
+          "200": {
+            "description": "Car deleted"
+          },
+          "400": {
+            "description": "Car not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Restore car",
+        "description": "Restore a sof deleted car deactivating fla 'is_deleted' on object",
+        "operationId": "RestoreById",
+        "responses": {
+          "200": {
+            "description": "car restored"
+          },
+          "400": {
+            "description": "Car not found"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of car to use",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/cars?marca={marca}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "List cars by brand",
+        "description": "List all cars registered with searched brand.",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "marca",
+          "in": "path",
+          "description": "Brand of car to search",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/cars?cor={cor}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "List cars by color",
+        "description": "List all cars registered with searched color",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "cor",
+          "in": "path",
+          "description": "Color of car to search",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/cars?marca={marca}&cor={cor}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "List cars by brand and / or color",
+        "description": "List all cars registered with searched brand and / or color. Can be used one or both parameters",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "marca",
+          "in": "path",
+          "description": "Brand of car to search",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        },
+        {
+          "name": "cor",
+          "in": "path",
+          "description": "Color of car to search",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/drivers": {
+      "post": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Register driver",
+        "description": "Register a new driver",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "John Doe"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Driver already registered"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "List drivers",
+        "description": "List all drivers registered and active",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/drivers/{id}": {
+      "put": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Update driver",
+        "description": "Update driver info",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "nome": "Fulano da Silva"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Driver info updated"
+          },
+          "400": {
+            "description": "Driver not registered"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Soft delete driver",
+        "description": "Activate a flag 'is_deleted' on object to don't show up on searchs",
+        "operationId": "softDeletebyId",
+        "responses": {
+          "200": {
+            "description": "Driver deleted"
+          },
+          "400": {
+            "description": "Driver not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Restore driver",
+        "description": "Restore a sof deleted driver deactivating fla 'is_deleted' on object",
+        "operationId": "RestoreById",
+        "responses": {
+          "200": {
+            "description": "Driver restored"
+          },
+          "400": {
+            "description": "Driver not found"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of driver to use",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/drivers?nome={nome}": {
+      "get": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "List drivers by name",
+        "description": "List all drivers registered with searched name.",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "nome",
+          "in": "path",
+          "description": "Name of driver to search",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    },
+    "/usage": {
+      "post": {
+        "tags": [
+          "Usage"
+        ],
+        "summary": "Register usage",
+        "description": "Create a new usage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "driver_id": {
+                    "type": "string"
+                  },
+                  "car_id": {
+                    "type": "string"
+                  },
+                  "motivo": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "driver_id": "driver uuid example",
+                  "car_id": "car uuid example",
+                  "motivo": "Test driver"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Registered"
+          },
+          "400": {
+            "description": "car or driver unavailable"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Usage"
+        ],
+        "summary": "List historical usage",
+        "description": "List all usage registered",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/usage/devolution/{id}": {
+      "patch": {
+        "tags": [
+          "Usage"
+        ],
+        "summary": "Devolute car",
+        "description": "Register devolution of a car",
+        "responses": {
+          "200": {
+            "description": "Usage info updated"
+          },
+          "400": {
+            "description": "Usage does not exists"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of usage",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
+    }
+  }
+}

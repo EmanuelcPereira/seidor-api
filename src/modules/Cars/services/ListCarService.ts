@@ -13,7 +13,7 @@ class ListCarService {
   constructor(
     @inject('CarsRepository')
     private carsRepository: ICarsRepository,
-  ) {}
+  ) { }
 
   public async execute({ marca, cor }: IRequest): Promise<Car[]> {
     const car = await this.carsRepository.findRegistered(marca, cor);

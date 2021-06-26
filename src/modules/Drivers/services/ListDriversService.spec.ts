@@ -1,5 +1,3 @@
-import AppError from '@shared/errors/AppError';
-
 import FakeDriversRepository from '../repositories/fake/FakeDriverRepository';
 import ListDriversService from './ListDriversService';
 
@@ -12,7 +10,7 @@ describe('List drivers', () => {
     listDriversService = new ListDriversService(fakeDriversRepository);
   });
 
-  it('should be able to create a new driver', async () => {
+  it('should be able list drivers', async () => {
     const driver = await fakeDriversRepository.create({
       nome: 'Fulano da Silva',
     });
