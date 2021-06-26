@@ -22,34 +22,28 @@ Cadastro de motoristas
 
 
 Utilização de um automóvel
-[] Criar um registro que represente a utilização de um automóvel por um motorista, com uma data de início e um texto do motivo de utilização.
+[x] Criar um registro que represente a utilização de um automóvel por um motorista, com uma data de início e um texto do motivo de utilização.
 
-[] Finalizar a utilização de um automóvel por um motorista guardando a data de finalização
+[x] Finalizar a utilização de um automóvel por um motorista guardando a data de finalização
 
-[] Listar os registros de utilização cadastrados no sistema com o nome do motorista e as informações do automóvel utilizado
+[x] Listar os registros de utilização cadastrados no sistema com o nome do motorista e as informações do automóvel utilizado
 
-[] que devemos controlar de cada recurso:
+O que devemos controlar de cada recurso:
 
 Automóvel
-o Placa
-o Cor
-o Marca
-
+- Placa
+- Cor
+- Marca
 
 Motorista
-o Nome
-
+- Nome
 
 Utilização do automóvel
-o Data de início da utilização
-
-o Data de término da utilização
-
-o Motorista que utilizou
-
-o Automóvel utilizado
-
-o Motivo de utilização
+- Data de início da utilização
+- Data de término da utilização
+- Motorista que utilizou
+- Automóvel utilizado
+- Motivo de utilização
 
 Regras de negócio: Um automóvel só pode ser utilizado por um motorista por vez. Um motorista que já esteja utilizando um automóvel não pode utilizar outro automóvel ao mesmo
 tempo.
