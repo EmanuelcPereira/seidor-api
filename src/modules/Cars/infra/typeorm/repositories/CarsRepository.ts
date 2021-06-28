@@ -11,11 +11,15 @@ class CarsRepository implements ICarsRepository {
     this.repository = getRepository(Car);
   }
 
-  public async create({ marca, placa, cor }: ICreateCarDTO): Promise<Car> {
+  public async create({
+    brand,
+    license_plate,
+    color,
+  }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
-      marca,
-      placa,
-      cor,
+      brand,
+      license_plate,
+      color,
     });
 
     await this.repository.save(car);
@@ -23,8 +27,10 @@ class CarsRepository implements ICarsRepository {
     return car;
   }
 
-  public async findByPlaca(placa: string): Promise<Car | undefined> {
-    const car = await this.repository.findOne({ placa });
+  public async findByLicensePlate(
+    license_plate: string,
+  ): Promise<Car | undefined> {
+    const car = await this.repository.findOne({ license_plate });
 
     return car;
   }
@@ -61,17 +67,17 @@ class CarsRepository implements ICarsRepository {
       .execute();
   }
 
-  public async findRegistered(marca?: string, cor?: string): Promise<Car[]> {
+  public async findRegistered(brand?: string, color?: string): Promise<Car[]> {
     const carsQuery = this.repository
       .createQueryBuilder()
       .where('is_deleted = :is_deleted', { is_deleted: false });
 
-    if (marca) {
-      carsQuery.andWhere('marca = :marca', { marca });
+    if (brand) {
+      carsQuery.andWhere('brand = :brand', { brand });
     }
 
-    if (cor) {
-      carsQuery.andWhere('cor = :cor', { cor });
+    if (color) {
+      carsQuery.andWhere('color = :color', { color });
     }
 
     const car = carsQuery.getMany();

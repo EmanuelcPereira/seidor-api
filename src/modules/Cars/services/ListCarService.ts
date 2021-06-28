@@ -4,8 +4,8 @@ import { inject, injectable } from 'tsyringe';
 import ICarsRepository from '../repositories/ICarsRepository';
 
 interface IRequest {
-  marca?: string;
-  cor?: string;
+  brand?: string;
+  color?: string;
 }
 
 @injectable()
@@ -15,8 +15,8 @@ class ListCarService {
     private carsRepository: ICarsRepository,
   ) { }
 
-  public async execute({ marca, cor }: IRequest): Promise<Car[]> {
-    const car = await this.carsRepository.findRegistered(marca, cor);
+  public async execute({ brand, color }: IRequest): Promise<Car[]> {
+    const car = await this.carsRepository.findRegistered(brand, color);
 
     return car;
   }

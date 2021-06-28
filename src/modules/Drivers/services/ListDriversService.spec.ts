@@ -12,7 +12,7 @@ describe('List drivers', () => {
 
   it('should be able list drivers', async () => {
     const driver = await fakeDriversRepository.create({
-      nome: 'Fulano da Silva',
+      name: 'Fulano da Silva',
     });
 
     const drivers = await listDriversService.execute({});
@@ -21,12 +21,12 @@ describe('List drivers', () => {
 
   it('should be able to list driver by name', async () => {
     await fakeDriversRepository.create({
-      nome: 'Fulano da Silva',
+      name: 'Fulano da Silva',
     });
 
     const driver = await listDriversService.execute({
-      nome: 'Fulano da Silva',
+      name: 'Fulano da Silva',
     });
-    expect(driver[0].nome).toEqual('Fulano da Silva');
+    expect(driver[0].name).toEqual('Fulano da Silva');
   });
 });

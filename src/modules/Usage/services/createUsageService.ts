@@ -8,7 +8,7 @@ import Usage from '../infra/typeorm/entities/Usage';
 interface IRequest {
   driver_id: string;
   car_id: string;
-  motivo: string;
+  motivation: string;
 }
 
 @injectable()
@@ -21,7 +21,7 @@ class CreateUsageService {
   public async execute({
     driver_id,
     car_id,
-    motivo,
+    motivation,
   }: IRequest): Promise<Usage> {
     const carUnavailable = await this.usageRepository.findCarAvailability(
       car_id,
@@ -39,7 +39,7 @@ class CreateUsageService {
       throw new AppError('This driver already have a car in use');
     }
 
-    if (motivo === ' ') {
+    if (motivation === ' ') {
       throw new AppError('It is necessary inform a motivation to use a car');
     }
 
@@ -47,7 +47,7 @@ class CreateUsageService {
       driver_id,
       car_id,
       start_date: new Date(),
-      motivo,
+      motivation,
     });
 
     return usage;

@@ -14,26 +14,26 @@ describe('Create car', () => {
 
   it('should be able to create a car', async () => {
     const car = await createCarService.execute({
-      marca: 'Ford',
-      placa: 'ABC-1234',
-      cor: 'branco',
+      brand: 'Ford',
+      license_plate: 'ABC-1234',
+      color: 'branco',
     });
 
     expect(car).toHaveProperty('id');
   });
 
-  it('should not be able to create a car with same placa', async () => {
+  it('should not be able to create a car with same license_plate', async () => {
     await createCarService.execute({
-      marca: 'Ford',
-      placa: 'ABC-1234',
-      cor: 'branco',
+      brand: 'Ford',
+      license_plate: 'ABC-1234',
+      color: 'branco',
     });
 
     await expect(
       createCarService.execute({
-        marca: 'Fiat',
-        placa: 'ABC-1234',
-        cor: 'verde',
+        brand: 'Fiat',
+        license_plate: 'ABC-1234',
+        color: 'verde',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

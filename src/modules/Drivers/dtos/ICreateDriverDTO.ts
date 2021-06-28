@@ -1,5 +1,5 @@
 interface ICreateDriverDTO {
-  nome: string;
+  name: string;
 }
 
 export default ICreateDriverDTO;

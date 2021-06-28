@@ -6,11 +6,11 @@ import { v4 as uuid } from 'uuid';
 class FakeDriversRepository implements IDriversRepository {
   drivers: Driver[] = [];
 
-  public async create({ nome }: ICreateDriverDTO): Promise<Driver> {
+  public async create({ name }: ICreateDriverDTO): Promise<Driver> {
     const driver = new Driver();
 
     driver.id = uuid();
-    driver.nome = nome;
+    driver.name = name;
     driver.is_deleted = false;
 
     this.drivers.push(driver);
@@ -20,8 +20,8 @@ class FakeDriversRepository implements IDriversRepository {
   public async findById(id: string): Promise<Driver | undefined> {
     return this.drivers.find(driver => driver.id === id);
   }
-  public async findByName(nome: string): Promise<Driver | undefined> {
-    return this.drivers.find(driver => driver.nome === nome);
+  public async findByName(name: string): Promise<Driver | undefined> {
+    return this.drivers.find(driver => driver.name === name);
   }
   public async save(driver: Driver): Promise<Driver> {
     const findIndex = this.drivers.findIndex(
@@ -44,9 +44,9 @@ class FakeDriversRepository implements IDriversRepository {
       driver.is_deleted = false;
     }
   }
-  public async findRegistered(nome?: string): Promise<Driver[]> {
+  public async findRegistered(name?: string): Promise<Driver[]> {
     const allDrivers = this.drivers.filter(driver => {
-      if (driver.is_deleted === false || (nome && driver.nome === nome)) {
+      if (driver.is_deleted === false || (name && driver.name === name)) {
         return driver;
       }
       return null;

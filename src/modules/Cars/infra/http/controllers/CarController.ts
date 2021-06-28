@@ -9,13 +9,13 @@ import { container } from 'tsyringe';
 class CarsController {
   public async create(request: Request, response: Response): Promise<Response> {
     try {
-      const { marca, placa, cor } = request.body;
+      const { brand, license_plate, color } = request.body;
 
       const createCar = container.resolve(CreateCarService);
       const car = await createCar.execute({
-        marca,
-        placa,
-        cor,
+        brand,
+        license_plate,
+        color,
       });
 
       return response.status(201).json(car);
@@ -27,15 +27,15 @@ class CarsController {
   public async update(request: Request, response: Response): Promise<Response> {
     try {
       const { id } = request.params;
-      const { marca, placa, cor } = request.body;
+      const { brand, license_plate, color } = request.body;
 
       const updateCarService = container.resolve(UpdateCarService);
 
       const car = updateCarService.execute({
         id,
-        marca,
-        placa,
-        cor,
+        brand,
+        license_plate,
+        color,
       });
 
       return response.json(car);
@@ -83,13 +83,13 @@ class CarsController {
     response: Response,
   ): Promise<Response> {
     try {
-      const { marca, cor } = request.query;
+      const { brand, color } = request.query;
 
       const listCarService = container.resolve(ListCarService);
 
       const cars = await listCarService.execute({
-        marca: marca as string,
-        cor: cor as string,
+        brand: brand as string,
+        color: color as string,
       });
 
       return response.json(cars);

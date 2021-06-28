@@ -4,7 +4,7 @@ import Driver from '../infra/typeorm/entities/Driver';
 import IDriversRepository from '../repositories/IDriversRepository';
 
 interface IRequest {
-  nome?: string;
+  name?: string;
 }
 
 @injectable()
@@ -14,8 +14,8 @@ class ListDriversService {
     private driversRepository: IDriversRepository,
   ) { }
 
-  public async execute({ nome }: IRequest): Promise<Driver[]> {
-    const driver = await this.driversRepository.findRegistered(nome);
+  public async execute({ name }: IRequest): Promise<Driver[]> {
+    const driver = await this.driversRepository.findRegistered(name);
 
     return driver;
   }

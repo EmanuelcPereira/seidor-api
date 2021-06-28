@@ -6,21 +6,27 @@ import { v4 as uuid } from 'uuid';
 class FakeCarsRepository implements ICarsRepository {
   cars: Car[] = [];
 
-  public async create({ marca, cor, placa }: ICreateCarDTO): Promise<Car> {
+  public async create({
+    brand,
+    color,
+    license_plate,
+  }: ICreateCarDTO): Promise<Car> {
     const car = new Car();
 
     car.id = uuid();
-    car.marca = marca;
-    car.placa = placa;
-    car.cor = cor;
+    car.brand = brand;
+    car.license_plate = license_plate;
+    car.color = color;
     car.is_deleted = false;
 
     this.cars.push(car);
 
     return car;
   }
-  public async findByPlaca(placa: string): Promise<Car | undefined> {
-    return this.cars.find(car => car.placa === placa);
+  public async findByLicensePlate(
+    license_plate: string,
+  ): Promise<Car | undefined> {
+    return this.cars.find(car => car.license_plate === license_plate);
   }
   public async findById(id: string): Promise<Car | undefined> {
     return this.cars.find(car => car.id === id);
@@ -44,12 +50,12 @@ class FakeCarsRepository implements ICarsRepository {
       car.is_deleted = false;
     }
   }
-  public async findRegistered(marca?: string, cor?: string): Promise<Car[]> {
+  public async findRegistered(brand?: string, color?: string): Promise<Car[]> {
     const allCars = this.cars.filter(car => {
       if (
         car.is_deleted === false ||
-        (marca && car.marca === marca) ||
-        (cor && car.cor === cor)
+        (brand && car.brand === brand) ||
+        (color && car.color === color)
       ) {
         return car;
       }

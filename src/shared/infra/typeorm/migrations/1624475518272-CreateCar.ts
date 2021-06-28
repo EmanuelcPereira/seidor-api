@@ -14,16 +14,16 @@ export class CreateCar1624475518272 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'marca',
+            name: 'brand',
             type: 'varchar',
           },
           {
-            name: 'placa',
+            name: 'license_plate',
             type: 'varchar',
             isUnique: true,
           },
           {
-            name: 'cor',
+            name: 'color',
             type: 'varchar',
           },
           {

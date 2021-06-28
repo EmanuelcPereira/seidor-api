@@ -16,7 +16,7 @@ describe('Soft Delete driver', () => {
 
   it('should be able to soft delete a driver', async () => {
     const driver = await fakeDriversRepository.create({
-      nome: 'Beltrano da Silva',
+      name: 'Beltrano da Silva',
     });
 
     const { id } = driver;

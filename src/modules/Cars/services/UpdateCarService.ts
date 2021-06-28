@@ -7,9 +7,9 @@ import ICarsRepository from '../repositories/ICarsRepository';
 
 interface IRequest {
   id: string;
-  marca: string;
-  placa: string;
-  cor: string;
+  brand: string;
+  license_plate: string;
+  color: string;
 }
 
 @injectable()
@@ -19,22 +19,29 @@ class UpdateCarService {
     private carsRepository: ICarsRepository,
   ) { }
 
-  public async execute({ id, marca, placa, cor }: IRequest): Promise<Car> {
+  public async execute({
+    id,
+    brand,
+    license_plate,
+    color,
+  }: IRequest): Promise<Car> {
     const car = await this.carsRepository.findById(id);
 
     if (!car) {
       throw new AppError('Car not registered');
     }
 
-    const placaExists = await this.carsRepository.findByPlaca(placa);
+    const license_plateExists = await this.carsRepository.findByLicensePlate(
+      license_plate,
+    );
 
-    if (placaExists) {
-      throw new AppError('There is a car registered with this placa');
+    if (license_plateExists) {
+      throw new AppError('There is a car registered with this license_plate');
     }
 
-    car.marca = marca;
-    car.placa = placa;
-    car.cor = cor;
+    car.brand = brand;
+    car.license_plate = license_plate;
+    car.color = color;
 
     await this.carsRepository.save(car);
 

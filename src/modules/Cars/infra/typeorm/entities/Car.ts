@@ -12,13 +12,13 @@ class Car {
   id: string;
 
   @Column()
-  marca: string;
+  brand: string;
 
   @Column()
-  placa: string;
+  license_plate: string;
 
   @Column()
-  cor: string;
+  color: string;
 
   @CreateDateColumn()
   created_at: Date;

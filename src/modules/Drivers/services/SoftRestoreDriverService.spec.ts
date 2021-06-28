@@ -21,7 +21,7 @@ describe('Restore driver register', () => {
 
   it('should be able to restore a driver register', async () => {
     const driver = await fakeDriversRepository.create({
-      nome: 'Beltrano da Silva',
+      name: 'Beltrano da Silva',
     });
 
     const { id } = driver;

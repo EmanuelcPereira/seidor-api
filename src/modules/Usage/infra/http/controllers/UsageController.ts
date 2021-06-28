@@ -7,14 +7,14 @@ import { container } from 'tsyringe';
 class UsageController {
   public async create(request: Request, response: Response): Promise<Response> {
     try {
-      const { car_id, driver_id, motivo } = request.body;
+      const { car_id, driver_id, motivation } = request.body;
 
       const createUsageService = container.resolve(CreateUsageService);
 
       const usage = await createUsageService.execute({
         car_id,
         driver_id,
-        motivo,
+        motivation,
       });
 
       return response.status(201).json(usage);

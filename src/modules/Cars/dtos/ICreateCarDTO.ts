@@ -1,7 +1,7 @@
 interface ICreateCarDTO {
-  marca: string;
-  placa: string;
-  cor: string;
+  brand: string;
+  license_plate: string;
+  color: string;
 }
 
 export default ICreateCarDTO;

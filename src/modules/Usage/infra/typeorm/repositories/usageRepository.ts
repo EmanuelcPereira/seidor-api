@@ -15,13 +15,13 @@ class UsageRepository implements IUsageRepository {
     driver_id,
     car_id,
     start_date,
-    motivo,
+    motivation,
   }: ICreateUsageDTO): Promise<Usage> {
     const usage = this.repository.create({
       driver_id,
       car_id,
       start_date,
-      motivo,
+      motivation,
     });
 
     await this.repository.save(usage);

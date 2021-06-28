@@ -14,9 +14,9 @@ describe('Soft Delete car', () => {
 
   it('should be able to soft delete a car', async () => {
     const car = await fakeCarsRepository.create({
-      placa: 'abc-123',
-      marca: 'volkswagen',
-      cor: 'verde',
+      license_plate: 'abc-123',
+      brand: 'volkswagen',
+      color: 'verde',
     });
 
     const { id } = car;

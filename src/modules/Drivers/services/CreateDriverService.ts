@@ -12,14 +12,14 @@ class CreateDriverService {
     @inject('DriversRepository')
     private driversRepository: IDriversRepository,
   ) { }
-  public async execute({ nome }: ICreateDriverDTO): Promise<Driver> {
-    const driverExists = await this.driversRepository.findByName(nome);
+  public async execute({ name }: ICreateDriverDTO): Promise<Driver> {
+    const driverExists = await this.driversRepository.findByName(name);
 
     if (driverExists) {
       throw new AppError('Driver already registered');
     }
 
-    const driver = this.driversRepository.create({ nome });
+    const driver = this.driversRepository.create({ name });
 
     return driver;
   }

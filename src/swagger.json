@@ -19,20 +19,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "marca": {
+                  "brand": {
                     "type": "string"
                   },
-                  "placa": {
+                  "license_plate": {
                     "type": "string"
                   },
-                  "cor": {
+                  "color": {
                     "type": "string"
                   }
                 },
                 "example": {
-                  "marca": "Brand example",
-                  "placa": "ABC-1111",
-                  "cor": "verde"
+                  "brand": "Brand example",
+                  "license_plate": "ABC-1111",
+                  "color": "verde"
                 }
               }
             }
@@ -76,20 +76,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "marca": {
+                  "brand": {
                     "type": "string"
                   },
-                  "placa": {
+                  "license_plate": {
                     "type": "string"
                   },
-                  "cor": {
+                  "color": {
                     "type": "string"
                   }
                 },
                 "example": {
-                  "marca": "Brand example 2",
-                  "placa": "DEF-2222",
-                  "cor": "preto"
+                  "brand": "Brand example 2",
+                  "license_plate": "DEF-2222",
+                  "color": "preto"
                 }
               }
             }
@@ -152,7 +152,7 @@
         }
       ]
     },
-    "/cars?marca={marca}": {
+    "/cars?brand={brand}": {
       "get": {
         "tags": [
           "Cars"
@@ -167,7 +167,7 @@
       },
       "parameters": [
         {
-          "name": "marca",
+          "name": "brand",
           "in": "path",
           "description": "Brand of car to search",
           "required": true,
@@ -181,7 +181,7 @@
         }
       ]
     },
-    "/cars?cor={cor}": {
+    "/cars?color={color}": {
       "get": {
         "tags": [
           "Cars"
@@ -196,7 +196,7 @@
       },
       "parameters": [
         {
-          "name": "cor",
+          "name": "color",
           "in": "path",
           "description": "Color of car to search",
           "required": true,
@@ -210,7 +210,7 @@
         }
       ]
     },
-    "/cars?marca={marca}&cor={cor}": {
+    "/cars?brand={brand}&color={color}": {
       "get": {
         "tags": [
           "Cars"
@@ -225,7 +225,7 @@
       },
       "parameters": [
         {
-          "name": "marca",
+          "name": "brand",
           "in": "path",
           "description": "Brand of car to search",
           "required": true,
@@ -238,7 +238,7 @@
           "style": "simple"
         },
         {
-          "name": "cor",
+          "name": "color",
           "in": "path",
           "description": "Color of car to search",
           "required": true,
@@ -265,12 +265,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "nome": {
+                  "name": {
                     "type": "string"
                   }
                 },
                 "example": {
-                  "nome": "John Doe"
+                  "name": "John Doe"
                 }
               }
             }
@@ -311,12 +311,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "nome": {
+                  "name": {
                     "type": "string"
                   }
                 },
                 "example": {
-                  "nome": "Fulano da Silva"
+                  "name": "Fulano da Silva"
                 }
               }
             }
@@ -379,7 +379,7 @@
         }
       ]
     },
-    "/drivers?nome={nome}": {
+    "/drivers?name={name}": {
       "get": {
         "tags": [
           "Drivers"
@@ -394,7 +394,7 @@
       },
       "parameters": [
         {
-          "name": "nome",
+          "name": "name",
           "in": "path",
           "description": "Name of driver to search",
           "required": true,
@@ -427,14 +427,14 @@
                   "car_id": {
                     "type": "string"
                   },
-                  "motivo": {
+                  "motivation": {
                     "type": "string"
                   }
                 },
                 "example": {
                   "driver_id": "driver uuid example",
                   "car_id": "car uuid example",
-                  "motivo": "Test driver"
+                  "motivation": "Test driver"
                 }
               }
             }

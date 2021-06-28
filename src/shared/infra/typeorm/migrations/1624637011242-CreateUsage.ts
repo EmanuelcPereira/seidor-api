@@ -32,7 +32,7 @@ export class CreateUsage1624637011242 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'motivo',
+            name: 'motivation',
             type: 'varchar',
           },
           {

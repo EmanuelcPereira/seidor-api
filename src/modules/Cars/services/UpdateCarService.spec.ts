@@ -14,52 +14,52 @@ describe('Update car', () => {
 
   it('should be able to update a car', async () => {
     const car = await fakeCarsRepository.create({
-      marca: 'Ford',
-      placa: 'ABC-1234',
-      cor: 'branco',
+      brand: 'Ford',
+      license_plate: 'ABC-1234',
+      color: 'branco',
     });
 
     const updatedCar = await updateCarService.execute({
       id: car.id,
-      marca: 'Fiat',
-      placa: 'DEF-5678',
-      cor: 'azul',
+      brand: 'Fiat',
+      license_plate: 'DEF-5678',
+      color: 'azul',
     });
 
-    expect(updatedCar.marca).toBe('Fiat');
-    expect(updatedCar.cor).toBe('azul');
+    expect(updatedCar.brand).toBe('Fiat');
+    expect(updatedCar.color).toBe('azul');
   });
 
   it('should not be able to update a not found car', async () => {
     await expect(
       updateCarService.execute({
         id: 'non-existent-id',
-        marca: 'Ford',
-        placa: 'ABC-1234',
-        cor: 'branco',
+        brand: 'Ford',
+        license_plate: 'ABC-1234',
+        color: 'branco',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to update a car with already registered placa', async () => {
-    const car1 = await fakeCarsRepository.create({
-      marca: 'Ford',
-      placa: 'ABC-1234',
-      cor: 'branco',
+  it('should not be able to update a car with already registered license_plate', async () => {
+    await fakeCarsRepository.create({
+      brand: 'Ford',
+      license_plate: 'ABC-1234',
+      color: 'branco',
     });
 
     const car2 = await fakeCarsRepository.create({
-      marca: 'Chevrolet',
-      placa: 'DEF-5678',
-      cor: 'verde',
+      brand: 'Chevrolet',
+      license_plate: 'DEF-5678',
+      color: 'verde',
     });
 
     await expect(
       updateCarService.execute({
         id: car2.id,
-        marca: 'Fiat',
-        placa: 'ABC-1234',
-        cor: 'azul',
+        brand: 'Fiat',
+        license_plate: 'ABC-1234',
+        color: 'azul',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

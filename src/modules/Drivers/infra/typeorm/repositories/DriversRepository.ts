@@ -11,8 +11,8 @@ class DriversRepository implements IDriversRepository {
     this.repository = getRepository(Driver);
   }
 
-  public async create({ nome }: ICreateDriverDTO): Promise<Driver> {
-    const driver = this.repository.create({ nome });
+  public async create({ name }: ICreateDriverDTO): Promise<Driver> {
+    const driver = this.repository.create({ name });
 
     await this.repository.save(driver);
 
@@ -25,8 +25,8 @@ class DriversRepository implements IDriversRepository {
     return driver;
   }
 
-  public async findByName(nome: string): Promise<Driver | undefined> {
-    const driver = this.repository.findOne({ nome });
+  public async findByName(name: string): Promise<Driver | undefined> {
+    const driver = this.repository.findOne({ name });
 
     return driver;
   }
@@ -56,13 +56,13 @@ class DriversRepository implements IDriversRepository {
       .execute();
   }
 
-  public async findRegistered(nome?: string): Promise<Driver[]> {
+  public async findRegistered(name?: string): Promise<Driver[]> {
     const driverQuery = this.repository
       .createQueryBuilder('find')
       .where('is_deleted = :is_deleted', { is_deleted: false });
 
-    if (nome) {
-      driverQuery.andWhere('nome LIKE :nome', { nome: `%${nome}%` });
+    if (name) {
+      driverQuery.andWhere('name LIKE :name', { name: `%${name}%` });
     }
 
     const driver = driverQuery.getMany();

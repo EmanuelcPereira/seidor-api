@@ -17,9 +17,9 @@ describe('Restore car register', () => {
 
   it('should be able to restore a car register', async () => {
     const car = await fakeCarsRepository.create({
-      placa: 'abc-123',
-      marca: 'volkswagen',
-      cor: 'verde',
+      license_plate: 'abc-123',
+      brand: 'volkswagen',
+      color: 'verde',
     });
 
     const { id } = car;

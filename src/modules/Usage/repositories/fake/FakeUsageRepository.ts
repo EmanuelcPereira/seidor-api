@@ -8,14 +8,14 @@ class FakeUsageRepository implements IUsageRepository {
   public async create({
     driver_id,
     car_id,
-    motivo,
+    motivation,
   }: ICreateUsageDTO): Promise<Usage> {
     const usage = new Usage();
 
     usage.id = uuid();
     usage.driver_id = driver_id;
     usage.car_id = car_id;
-    usage.motivo = motivo;
+    usage.motivation = motivation;
 
     this.use.push(usage);
 

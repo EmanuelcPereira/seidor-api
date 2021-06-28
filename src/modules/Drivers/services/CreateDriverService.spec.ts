@@ -14,7 +14,7 @@ describe('Create driver', () => {
 
   it('should be able to create a new driver', async () => {
     const driver = await createDriverService.execute({
-      nome: 'Fulano da Silva',
+      name: 'Fulano da Silva',
     });
 
     expect(driver).toHaveProperty('id');
@@ -22,12 +22,12 @@ describe('Create driver', () => {
 
   it('should not be able to create a new driver with same name', async () => {
     await createDriverService.execute({
-      nome: 'Fulano da Silva',
+      name: 'Fulano da Silva',
     });
 
     await expect(
       createDriverService.execute({
-        nome: 'Fulano da Silva',
+        name: 'Fulano da Silva',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

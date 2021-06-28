@@ -36,7 +36,7 @@ class Usage {
   end_date: Date;
 
   @Column()
-  motivo: string;
+  motivation: string;
 
   @CreateDateColumn()
   created_at: Date;

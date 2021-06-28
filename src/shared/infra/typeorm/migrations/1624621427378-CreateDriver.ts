@@ -14,7 +14,7 @@ export class CreateDriver1624621427378 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'nome',
+            name: 'name',
             type: 'varchar',
           },
           {
